@@ -20,5 +20,15 @@ namespace PlayFab
             return !string.IsNullOrEmpty(ClientSessionTicket);
         }
 #endif
+
+        public void ForgetAllCredentials()
+        {
+#if !DISABLE_PLAYFABCLIENT_API
+            ClientSessionTicket = null;
+#endif
+#if !DISABLE_PLAYFABENTITY_API
+            EntityToken = null;
+#endif
+        }
     }
 }

@@ -3816,6 +3816,15 @@ namespace PlayFab
             return PlayFabSettings.staticPlayer.IsClientLoggedIn();
         }
 
+        /// <summary>
+        /// Clear the Client SessionToken which allows this Client to call API calls requiring login.
+        /// A new/fresh login will be required after calling this.
+        /// </summary>
+        public static void ForgetAllCredentials()
+        {
+            PlayFabSettings.staticPlayer.ForgetAllCredentials();
+        }
+
         private static async Task<PlayFabResult<AttributeInstallResult>> MultiStepClientLogin(bool needsAttribution)
         {
             if (needsAttribution && !PlayFabSettings.staticSettings.DisableAdvertising && !string.IsNullOrEmpty(PlayFabSettings.staticSettings.AdvertisingIdType) && !string.IsNullOrEmpty(PlayFabSettings.staticSettings.AdvertisingIdValue))
